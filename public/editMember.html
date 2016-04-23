@@ -1,0 +1,178 @@
+<!-- Here for historical purposes
+
+<!DOCTYPE html>
+<html lang="en" ng-app="memberApp">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Jubeck Brewery Edit Member</title>
+    <link rel="stylesheet" href="app/bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="stylesheets/style.css">
+</head>
+<body>
+
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        &lt;!&ndash; Brand and toggle get grouped for better mobile display &ndash;&gt;
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="index.html"><img src="img/jubeckLogo.png" class="navbar-brand logo"></a>
+        </div>
+
+        &lt;!&ndash; Collect the nav links, forms, and other content for toggling &ndash;&gt;
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="index.html">ADD PINT OR GROWLER</a></li>
+                <li><a href="newMember.html">ADD NEW MEMBER</a></li>
+            </ul>
+        </div>&lt;!&ndash; /.navbar-collapse &ndash;&gt;
+    </div>&lt;!&ndash; /.container-fluid &ndash;&gt;
+</nav>
+
+<div ng-controller="TypeaheadCtrl">
+    <script type="text/ng-template" id="customPopupTemplate.html">
+        <div class="custom-popup-wrapper"
+             ng-style="{top: position().top+'px', left: position().left+'px'}"
+             style="display: block;"
+             ng-show="isOpen() && !moveInProgress"
+             aria-hidden="{{!isOpen()}}">
+            &lt;!&ndash;<p class="message">select name from drop down.</p>&ndash;&gt;
+
+            <ul class="dropdown-menu" role="listbox">
+                <li ng-repeat="match in matches track by $index" ng-class="{active: isActive($index) }"
+                    ng-mouseenter="selectActive($index)" ng-click="selectMatch($index)" role="option" id="{{::match.id}}">
+                    <div uib-typeahead-match index="$index" match="match" query="query" template-url="templateUrl"></div>
+                </li>
+            </ul>
+        </div>
+    </script>
+    <div class="container-fluid">
+        <form class="form-horizontal">
+            <div class="form-group">
+                <div class="typeahead-demo col-xs-offset-1  col-xs-10 editInputContainer">
+                    &lt;!&ndash;<pre>Model: {{customPopupSelected | json}}</pre>&ndash;&gt;
+                    <input type="text" ng-model="customPopupSelected"
+                           class="editInput form-control"
+                           placeholder="Member name or number..."
+                           uib-typeahead="member as member.member_name for member in memberData | filter:{member_name:$viewValue}"
+                           typeahead-popup-template-url="customPopupTemplate.html" class="form-control">
+                </div>
+            </div>
+        </form>
+    </div>
+
+
+    <div ng-controller='MemberCreateController'>
+        <div class="container-fluid">
+            <div class="row">
+                <form novalidate class="simple-form ng-scope ng-valid" role="form" ng-submit="editMember()">
+                    <div class="ng-scope input-group input-group-md col-xs-10 col-xs-offset-1 newMemOne">
+                        <span class="input-group-addon">First Name</span>
+                        <input type="text" ng-model="customPopupSelected.firstname" class="form-control ng-scope"
+                               id="firstname"
+                               aria-describedby="sizing-addon1"/>
+                    </div>
+                    <div class="ng-scope input-group input-group-md col-xs-10 col-xs-offset-1">
+                        <span class="input-group-addon">Last Name</span>
+                        <input type="text" ng-model="customPopupSelected.lastname" class="form-control" id="lastname"
+                               aria-describedby="sizing-addon1"/>
+                    </div>
+                    <div class="ng-scope input-group input-group-md col-xs-10 col-xs-offset-1">
+                        <span class="input-group-addon">Alt First Name</span>
+                        <input type="text" ng-model="customPopupSelected.alt_firstname" class="form-control ng-scope"
+                               id="alt_firstname"
+                               aria-describedby="sizing-addon1"/>
+                    </div>
+                    <div class="ng-scope input-group input-group-md col-xs-10 col-xs-offset-1">
+                        <span class="input-group-addon">Alt Last Name</span>
+                        <input type="text" ng-model="customPopupSelected.alt_lastname" class="form-control"
+                               id="alt_lastname"
+                               aria-describedby="sizing-addon1"/>
+                    </div>
+                    <div class="ng-scope input-group input-group-md col-xs-10 col-xs-offset-1">
+                        <span class="input-group-addon">Street Address</span>
+                        <input type="text" ng-model="customPopupSelected.street" class="form-control" id="street"
+                               aria-describedby="sizing-addon1"/>
+                    </div>
+                    <div class="ng-scope input-group input-group-md col-xs-10 col-xs-offset-1">
+                        <span class="input-group-addon">City</span>
+                        <input type="text" ng-model="customPopupSelected.city" class="form-control" id="city"
+                               aria-describedby="sizing-addon1"/>
+                    </div>
+                    <div class="ng-scope input-group input-group-md col-xs-10 col-xs-offset-1">
+                        <span class="input-group-addon">State</span>
+                        <input type="text" ng-model="customPopupSelected.state" class="form-control" id="state"
+                               aria-describedby="sizing-addon1"/>
+                    </div>
+                    <div class="ng-scope input-group input-group-md col-xs-10 col-xs-offset-1">
+                        <span class="input-group-addon">Zip</span>
+                        <input type="text" ng-model="customPopupSelected.zip" class="form-control" id="zip"
+                               aria-describedby="sizing-addon1"/>
+                    </div>
+                    <div class="ng-scope input-group input-group-md col-xs-10 col-xs-offset-1">
+                        <span class="input-group-addon">Phone Number</span>
+                        <input type="text" ng-model="customPopupSelected.phone" class="form-control" id="phone"
+                               aria-describedby="sizing-addon1"/>
+                    </div>
+                    <div class="ng-scope input-group input-group-md col-xs-10 col-xs-offset-1">
+                        <span class="input-group-addon">Email</span>
+                        <input type="text" ng-model="customPopupSelected.email" class="form-control" id="email"
+                               aria-describedby="sizing-addon1"/>
+                    </div>
+
+                    <div class="input-group input-group-md col-xs-10 col-xs-offset-1">
+                        <span class="input-group-addon">Start Date</span>
+                        <input type="text" ng-model="customPopupSelected.date" class="form-control datePicker"
+                               id="start_date"
+                               aria-describedby="sizing-addon1"/>
+                    </div>
+
+                    <div class="container-fluid ng-scope">
+                        <div class="row ng-scope radio-type">
+                            <label class="col-xs-2 col-xs-offset-2">
+                                <input type="radio" ng-model="customPopupSelected.membership" value="social">
+                                Social
+                            </label>
+                            <label class="col-xs-2">
+                                <input type="radio" ng-model="customPopupSelected.membership" value="flex">
+                                Flex
+                            </label>
+                            <label class="col-xs-2">
+                                <input type="radio" ng-model="customPopupSelected.membership" value="half">
+                                Half
+                            </label>
+                            <label class="col-xs-2">
+                                <input type="radio" ng-model="customPopupSelected.membership" value="full">
+                                Full
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="ng-scope">
+                        <input class="submitBtn btn btn-default btn-md col-xs-4 col-xs-offset-4" type="submit"
+                               value="Submit Edit"/>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="app/bower_components/angular/angular.min.js"></script>
+<script src="app/bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
+<script src="https://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.14.3.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-animate.js"></script>
+<script src="app/bower_components/angular-resource/angular-resource.min.js"></script>
+<script src="app/bower_components/angular/angular-ui-router.min.js"></script>
+<script src="app/bower_components/angular-route/angular-route.min.js"></script>
+<script src="js/index.js"></script>
+</body>
+
+</html>-->

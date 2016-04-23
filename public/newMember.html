@@ -1,0 +1,139 @@
+
+<!-- Here for historical purposes
+
+<!doctype html>
+<html lang="en" ng-app="memberApp" data-ng-app="memberApp">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="app/bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="stylesheets/style.css">
+    <title>Jubeck Brewery New Member</title>
+</head>
+
+<body>
+
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        &lt;!&ndash; Brand and toggle get grouped for better mobile display &ndash;&gt;
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="index.html"><img src="img/jubeckLogo.png" class="navbar-brand logo"></a>
+        </div>
+
+        &lt;!&ndash; Collect the nav links, forms, and other content for toggling &ndash;&gt;
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="index.html">ADD PINT OR GROWLER</a></li>
+                <li><a href="editMember.html">EDIT MEMBER</a></li>
+            </ul>
+        </div>&lt;!&ndash; /.navbar-collapse &ndash;&gt;
+    </div>&lt;!&ndash; /.container-fluid &ndash;&gt;
+</nav>
+
+<div ng-controller='MemberCreateController'>
+    <div class="container-fluid">
+        <div class="row">
+            <form novalidate class="simple-form ng-scope ng-valid" role="form" ng-submit="addMember()">
+                <div class="ng-scope input-group input-group-md col-xs-10 col-xs-offset-1 newMemOne">
+                    <span class="input-group-addon">First Name</span>
+                    <input type="text" ng-model="member.firstName" class="form-control ng-scope" id="firstName"
+                           aria-describedby="sizing-addon1"/>
+                </div>
+                <div class="ng-scope input-group input-group-md col-xs-10 col-xs-offset-1">
+                    <span class="input-group-addon">Last Name</span>
+                    <input type="text" ng-model="member.lastName" class="form-control" id="lastName"
+                           aria-describedby="sizing-addon1"/>
+                </div>
+                <div class="ng-scope input-group input-group-md col-xs-10 col-xs-offset-1">
+                    <span class="input-group-addon">Alt First Name</span>
+                    <input type="text" ng-model="member.alt_firstname" class="form-control ng-scope"
+                           id="alt_firstname"
+                           aria-describedby="sizing-addon1"/>
+                </div>
+                <div class="ng-scope input-group input-group-md col-xs-10 col-xs-offset-1">
+                    <span class="input-group-addon">Alt Last Name</span>
+                    <input type="text" ng-model="member.alt_lastname" class="form-control"
+                           id="alt_lastname"
+                           aria-describedby="sizing-addon1"/>
+                </div>
+                <div class="ng-scope input-group input-group-md col-xs-10 col-xs-offset-1">
+                    <span class="input-group-addon">Street Address</span>
+                    <input type="text" ng-model="member.streetAddress" class="form-control" id="streetAddress"
+                           aria-describedby="sizing-addon1"/>
+                </div>
+                <div class="ng-scope input-group input-group-md col-xs-10 col-xs-offset-1">
+                    <span class="input-group-addon">City</span>
+                    <input type="text" ng-model="member.city" class="form-control" id="city"
+                           aria-describedby="sizing-addon1"/>
+                </div>
+                <div class="ng-scope input-group input-group-md col-xs-10 col-xs-offset-1">
+                    <span class="input-group-addon">State</span>
+                    <input type="text" ng-model="member.state" class="form-control" id="state"
+                           aria-describedby="sizing-addon1"/>
+                </div>
+                <div class="ng-scope input-group input-group-md col-xs-10 col-xs-offset-1">
+                    <span class="input-group-addon">Zip</span>
+                    <input type="text" ng-model="member.zip" class="form-control" id="zip"
+                           aria-describedby="sizing-addon1"/>
+                </div>
+                <div class="ng-scope input-group input-group-md col-xs-10 col-xs-offset-1">
+                    <span class="input-group-addon">Phone Number</span>
+                    <input type="text" ng-model="member.zip" class="form-control" id="phoneNumber"
+                           aria-describedby="sizing-addon1"/>
+                </div>
+
+                <div class="input-group input-group-md col-xs-10 col-xs-offset-1">
+                    <span class="input-group-addon">Start Date</span>
+                    <input type="date" ng-model="member.startDate" class="form-control datePicker" id="startDate"
+                           aria-describedby="sizing-addon1"/>
+                </div>
+                <div class="container-fluid ng-scope">
+                    <div class="row ng-scope radio-type">
+                        <label class="col-xs-2 col-xs-offset-2">
+                            <input type="radio" ng-model="member.type" value="social">
+                            Social
+                        </label>
+                        <label class="col-xs-2">
+                            <input type="radio" ng-model="member.type" value="flex">
+                            Flex
+                        </label>
+                        <label class="col-xs-2">
+                            <input type="radio" ng-model="member.type" value="half">
+                            Half
+                        </label>
+                        <label class="col-xs-2">
+                            <input type="radio" ng-model="member.type" value="full">
+                            Full
+                        </label>
+                    </div>
+                </div>
+                <div class="ng-scope">
+
+                    <input class="submitBtn btn btn-default btn-md col-xs-4 col-xs-offset-4" type="submit"
+                           value="Save"/>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="app/bower_components/angular/angular.min.js"></script>
+<script src="app/bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
+<script src="https://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.14.3.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-animate.js"></script>
+<script src="app/bower_components/angular-resource/angular-resource.min.js"></script>
+<script src="app/bower_components/angular/angular-ui-router.min.js"></script>
+<script src="app/bower_components/angular-route/angular-route.min.js"></script>
+<script src="js/index.js"></script>
+
+</body>
+</html>
+-->

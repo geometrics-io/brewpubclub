@@ -1,0 +1,108 @@
+.navbar-brand {
+  height: 7em; }
+
+.navbar-nav > li > a {
+  margin-top: .5em; }
+
+.navbar > .container-fluid .navbar-brand {
+  margin-left: 0; }
+
+@media (min-width: 768px) {
+  .navbar-nav > li > a {
+    padding-top: 3.25em; } }
+.typeahead-demo .custom-popup-wrapper {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  display: none;
+  background-color: #f9f9f9; }
+  .typeahead-demo .custom-popup-wrapper .message {
+    padding: 10px 20px;
+    border-bottom: 1px solid #ddd;
+    color: #abc6b8; }
+  .typeahead-demo .custom-popup-wrapper .dropdown-menu {
+    position: static;
+    float: none;
+    display: block;
+    min-width: 160px;
+    background-color: transparent;
+    border: none;
+    border-radius: 0;
+    box-shadow: none; }
+
+@media (min-width: 768px) {
+  .typeahead-demo .custom-popup-wrapper .dropdown-menu {
+    font-size: 2em; } }
+.addInputContainer {
+  margin-top: 1em; }
+  .addInputContainer .pint-btn {
+    margin-right: 15px; }
+
+.displayData {
+  font-size: 1.25em; }
+  .displayData .member-info {
+    margin: 1em 0; }
+    .displayData .member-info .oopsBtn {
+      margin-bottom: .5em; }
+
+@media (min-width: 768px) {
+  .member-info {
+    font-size: 1.75em; } }
+.warning {
+  color: #E10600; }
+
+.input-group {
+  padding: 1em 0; }
+
+.input-group-addon {
+  width: 120px; }
+
+.radio-type {
+  font-size: 1.25em;
+  margin: 1em 0; }
+
+label {
+  margin-bottom: 5px;
+  font-weight: normal;
+  text-align: center; }
+
+.has-warning .input-group-addon {
+  color: #fff;
+  background-color: #a3bdb1;
+  border-color: #a3bdb1; }
+.has-warning .form-control {
+  border-color: #a3bdb1; }
+.has-warning .form-control:focus {
+  border-color: #a3bdb1;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(163, 189, 177, 0.6); }
+
+.newMemSubmitBtn {
+  margin-top: 2em;
+  margin-bottom: 4em; }
+
+.editInputContainer {
+  padding: 1.5em 0 .5em 0; }
+
+.editMemberBtn {
+  margin-top: .75em; }
+
+.newMembershipBtn {
+  margin-top: 1em;
+  margin-bottom: 4em; }
+
+@media (min-width: 768px) {
+  .editMemberBtn,
+  .newMembershipBtn {
+    margin-top: 2em;
+    margin-bottom: 4em; }
+
+  .editMemberBtn {
+    position: relative;
+    left: 1.75em; }
+
+  .newMembershipBtn {
+    position: relative;
+    right: 1.75em; } }
+
+/*# sourceMappingURL=style.css.map */
