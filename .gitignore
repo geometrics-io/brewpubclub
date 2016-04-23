@@ -1,0 +1,8 @@
+public/app/bower_components/
+node_modules/
+nohup.out
+routes/npm-debug.log
+views/
+.idea
+public/.DS_Store
+public/app/.DS_Store
