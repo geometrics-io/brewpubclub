@@ -5,7 +5,7 @@ process.env.USER = 'postgres';
 process.env.PGUSER = 'postgres';
 var knex = require('knex')({
     client: 'pg',
-    connection: 'pg://<postgres_user>:<postgres_user_password>@localhost:5432/brewery',
+    connection: 'pg://postgres:6GLp29Fd4B:L@localhost:5432/brewery',
     debugging: 'true'
     //searchPath: 'knex,public'
 });

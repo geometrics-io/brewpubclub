@@ -1,0 +1,61 @@
+<script type="text/ng-template" id="customPopupTemplate.html">
+    <div class="custom-popup-wrapper"
+         ng-style="{top: position().top+'px', left: position().left+'px'}"
+         style="display: block;"
+         ng-show="isOpen() && !moveInProgress"
+         aria-hidden="{{!isOpen()}}">
+        <!--<p class="message">select name from drop down.</p>-->
+
+        <ul class="dropdown-menu" role="listbox">
+            <li ng-repeat="match in matches track by $index" ng-class="{active: isActive($index) }"
+                ng-mouseenter="selectActive($index)" ng-click="selectMatch($index)" role="option" id="{{::match.id}}">
+                <div uib-typeahead-match index="$index" match="match" query="query" template-url="templateUrl"></div>
+            </li>
+        </ul>
+    </div>
+</script>
+<div class="container-fluid">
+    <div class="row addInputContainer">
+        <form class="form-inline">
+            <div class="typeahead-demo form-group col-xs-10 col-xs-offset-1">
+                <!--<pre>Model: {{ member | json}}</pre>-->
+                <input type="text" ng-model="themember"
+                       class="col-xs-12 input-lg lgInput"
+                       placeholder="Member name or number..."
+                       uib-typeahead="member as member.member_name for member in memberData | filter:{member_name:$viewValue}"
+                       typeahead-popup-template-url="customPopupTemplate.html">
+            </div>
+        </form>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-11 col-xs-offset-1 displayData">
+            <div ng-show="themember.member_name" class="member-info">
+                <p ng-show="themember.member_name">Member Name:
+                    {{themember.firstname}} {{themember.lastname}}</p>
+
+                <p ng-show="themember.alt_firstname">Alternate Member:
+                    {{themember.alt_firstname}} {{themember.alt_lastname}}</p>
+
+                <p ng-show="themember.membership">Member Level:
+                    {{themember.membership}}</p>
+
+                <p ng-show="themember.units_used">Units Used:
+                    {{themember.units_used}}</p>
+
+                <p ng-show="themember.units_remaining">Units Remaining:
+                    {{themember.units_remaining}}</p>
+
+                <p ng-show="themember.start_date">Start Date:
+                {{themember.start_date}}</p>
+            </div>
+            <form class="ng-scope" ng-model="themember" ng-submit="renewMember()">
+            <input ng-model="themember" ng-show="" class="ng-scope" />
+            <button ng-model="themember" ng-show="themember.firstname" ng-click="indexRedirect()" class="btn btn-default btn-lg col-xs-6 col-sm-3 ng-scope" type="submit">
+                Renew Member
+            </button>
+            </form>
+        </div>
+    </div>
+</div>

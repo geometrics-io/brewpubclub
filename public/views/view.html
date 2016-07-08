@@ -1,0 +1,108 @@
+<script type="text/ng-template" id="customPopupTemplate.html">
+    <div class="custom-popup-wrapper"
+         ng-style="{top: position().top+'px', left: position().left+'px'}"
+         style="display: block;"
+         ng-show="isOpen() && !moveInProgress"
+         aria-hidden="{{!isOpen()}}">
+        <!--<p class="message">select name from drop down.</p>-->
+
+        <ul class="dropdown-menu" role="listbox">
+            <li ng-repeat="match in matches track by $index" ng-class="{active: isActive($index) }"
+                ng-mouseenter="selectActive($index)" ng-click="selectMatch($index)" role="option" id="{{::match.id}}">
+                <div uib-typeahead-match index="$index" match="match" query="query" template-url="templateUrl"></div>
+            </li>
+        </ul>
+    </div>
+</script>
+<div class="container-fluid">
+    <div class="row addInputContainer">
+        <form class="form-inline">
+            <div class="typeahead-demo form-group col-sm-6 col-sm-offset-1 hidden-xs">
+                <input type="text" ng-model="themember"
+                       class="col-xs-12 input-lg lgInput"
+                       placeholder="Member name or number..."
+                       uib-typeahead="member as member.member_name for member in memberData |
+                       filter:{member_name:$viewValue}"
+                       typeahead-popup-template-url="customPopupTemplate.html">
+            </div>
+            <button type="button" ng-click="themember.raw_units=1 ; addUnit(); pintButton(1)"
+                    ng-disabled="themember.units_remaining <= 0"
+                    class="pint-btn btn btn-default col-sm-2 col-sm-offset-0 btn-lg hidden-xs"
+                    value=1>{{pint}}
+            </button>
+            <button type="button" ng-click="themember.raw_units=4 ; addUnit(); growlerButton(1)"
+                    ng-disabled="themember.units_remaining <= 3"
+                    class="btn btn-default col-sm-2 col-sm-offset-0 btn-lg hidden-xs"
+                    value="4">
+                {{growler}}
+            </button>
+        </form>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6 hidden-sm hidden-md hidden-lg">
+            <div class="input-group">
+                <div class="typeahead-demo">
+                    <input type="text" ng-model="themember"
+                           aria-label="..."
+                           placeholder="Member name or number..."
+                           uib-typeahead="member as member.member_name for member in memberData |
+                       filter:{member_name:$viewValue}"
+                           typeahead-popup-template-url="customPopupTemplate.html" class="form-control">
+                </div>
+                <div class="input-group-btn">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">Action <span class="caret"></span></button>
+                    <ul class="dropdown-menu dropdown-menu-right">
+                        <li><a href="#" ng-click="themember.raw_units=1 ; addUnit()">Pint</a></li>
+                        <li><a href="#" ng-click="themember.raw_units=4 ; addUnit()">Growler</a></li>
+                    </ul>
+                </div><!-- /btn-group -->
+            </div><!-- /input-group -->
+        </div><!-- /.col-lg-6 -->
+    </div><!-- /.row -->
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-11 col-xs-offset-1 displayData">
+            <div ng-show="themember.units_remaining" class="member-info">
+                <p ng-show="themember.units_remaining >=1 && themember.units_remaining <=4" class="warning">Only
+                    {{themember.units_remaining}} Units Left!</p>
+                <p ng-show="themember.units_remaining <= 0" class="warning">No More Units left :(</p>
+                <p ng-show="themember.member_name">Member Name:
+                    {{themember.firstname}} {{themember.lastname}}</p>
+                <p ng-show="themember.alt_firstname">Alternate Member:
+                    {{themember.alt_firstname}} {{themember.alt_lastname}}</p>
+
+                <p ng-show="themember.membership">Member Level:
+                    {{themember.membership}}</p>
+
+                <p ng-show="themember.units_used">Units Used:
+                    {{themember.units_used}}</p>
+
+                <p ng-show="themember.units_used">Last Used: {{themember.last_used | date : 'MMM dd, yyyy'}}</p>
+
+                <p ng-show="themember.units_remaining">Units Remaining:
+                    {{themember.units_remaining}}</p>
+
+                <p ng-show="themember.end_date">End Date:
+                    {{themember.end_date | date : 'MMM dd, yyyy' }}</p>
+                <div class="minusStyling">
+                    <div>
+                        <button type="button" class="btn btn-default oopsBtn" ngmodel="themember.raw_units" value="-1"
+                                ng-click="themember.raw_units = -1 ; addUnit(); pintButton(-1)">Oops, Remove 1 Pint
+                        </button>
+                    </div>
+                    <div>
+                        <button type="button" class="btn btn-default" ngmodel="themember.raw_units" value="-4"
+                                ng-click="themember.raw_units = -4 ; addUnit(); growlerButton(-1)">Oops, Remove 1 Growler
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

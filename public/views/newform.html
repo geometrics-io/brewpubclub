@@ -1,0 +1,17 @@
+<div class="container-fluid">
+    <div class="row">
+        <form class="simple-form ng-scope ng-valid" role="form" name="newForm" novalidate>
+            <div ng-include="'views/_form.html'"></div>
+            <div class="ng-scope">
+                <input class="newMemSubmitBtn submitBtn btn btn-default btn-md col-xs-4 col-xs-offset-4" type="submit"
+                       value="Save"
+                       ng-click="addMember() ; indexRedirect()"
+                       ng-disabled="newForm.first.$invalid || newForm.last.$invalid || newForm.start.$invalid"
+                />
+            </div>
+        </form>
+    </div>
+</div>
+
+<!--<pre>{{newForm.first | json}}</pre>-->
+
